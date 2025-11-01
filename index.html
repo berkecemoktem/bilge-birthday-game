@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💖 Bilge Memory Game 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>💖 Bilge's Birthday Memory Game 🎂</h1>
+    <p class="subtitle">Match the pairs and reveal the surprise! Note: You lose if you hit X !</p>
+
+    <div id="game-board"></div>
+    <div id="score">Moves: 0</div>
+  </div>
+
+  <!-- 💥 FAIL Popup (X Card Clicked) -->
+  <div id="fail-popup" class="popup hidden">
+    <div class="popup-content fail-content">
+      <h2>💥 OOPS! 💥</h2>
+      <div class="image-container">
+        <!-- You can add Bilge's sad picture here -->
+        <img id="fail-image" src="" alt="Sad Bilge" class="hidden" />
+        <div class="fail-emoji">😢</div>
+      </div>
+      <p id="fail-message">You picked the wrong card!<br>Game Over!</p>
+      <button id="fail-restart-btn" class="restart-btn">Try Again</button>
+    </div>
+  </div>
+
+  <!-- 🎉 SUCCESS Popup (All Pairs Matched) -->
+  <div id="success-popup" class="popup hidden">
+    <div class="popup-content success-content">
+      <h2>🎉 CONGRATULATIONS! 🎉</h2>
+      <div class="image-container">
+        <!-- You can add Bilge's happy picture here -->
+        <img id="success-image" src="" alt="Happy Bilge" class="hidden" />
+        <div class="success-emoji">🎂</div>
+      </div>
+      <p id="success-message"></p>
+      <button id="success-restart-btn" class="restart-btn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
