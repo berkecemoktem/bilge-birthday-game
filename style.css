@@ -6,62 +6,71 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  padding: 10px; /* 📱 Add padding for mobile */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .game-container {
   text-align: center;
   background: rgba(255, 255, 255, 0.6);
-  padding: 20px;
+  padding: 15px;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   position: relative;
-  max-width: 100%; /* 📱 Prevent overflow */
+  max-width: 100%;
   width: 100%;
 }
 
 h1 {
   color: #d63384;
-  font-size: 1.8em;
-  margin-bottom: 10px;
+  font-size: 1.4em;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .subtitle {
   color: #444;
-  font-size: 0.9em;
-  margin-bottom: 20px;
+  font-size: 0.75em;
+  margin-bottom: 15px;
+  line-height: 1.3;
 }
 
 #game-board {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 📱 Flexible columns */
-  grid-gap: 8px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
   justify-content: center;
-  max-width: 550px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 5px;
+  width: 100%;
 }
 
 /* ✅ Responsive card styles */
 .card {
   width: 100%;
-  aspect-ratio: 1; /* 📱 Keep cards square */
+  aspect-ratio: 1;
   background-color: #ffb6c1;
-  border-radius: 14px;
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: white;
   user-select: none;
-  transition: transform 0.4s, background 0.4s;
+  transition: transform 0.3s, background 0.3s;
   transform-style: preserve-3d;
   overflow: hidden;
+  position: relative;
 }
 
-.card:hover {
-  transform: scale(1.08);
+.card:active {
+  transform: scale(0.95);
 }
 
 .card.flipped {
@@ -79,14 +88,15 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 10px;
   pointer-events: none;
 }
 
 #score {
-  margin-top: 20px;
-  font-size: 1.1em;
+  margin-top: 15px;
+  font-size: 1em;
   color: #333;
+  font-weight: 600;
 }
 
 /* 🎨 Popup Styles */
@@ -103,7 +113,7 @@ h1 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  padding: 20px; /* 📱 Mobile padding */
+  padding: 20px;
 }
 
 .popup.show {
@@ -113,14 +123,16 @@ h1 {
 
 .popup-content {
   background: white;
-  padding: 30px 40px;
+  padding: 25px 30px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   text-align: center;
   transform: scale(0.7);
   transition: transform 0.3s ease;
-  max-width: 90%; /* 📱 Responsive width */
+  max-width: 90%;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .popup.show .popup-content {
@@ -128,14 +140,14 @@ h1 {
 }
 
 .popup h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 1.6em;
+  margin-bottom: 15px;
 }
 
 .popup p {
-  font-size: 1.1em;
-  margin-bottom: 25px;
-  line-height: 1.6;
+  font-size: 1em;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 /* 💥 FAIL Popup */
@@ -158,8 +170,8 @@ h1 {
 }
 
 .fail-emoji {
-  font-size: 4em;
-  margin: 20px 0;
+  font-size: 3em;
+  margin: 15px 0;
   animation: shake 0.5s ease-in-out;
 }
 
@@ -183,22 +195,22 @@ h1 {
 }
 
 .success-emoji {
-  font-size: 4em;
-  margin: 20px 0;
+  font-size: 3em;
+  margin: 15px 0;
   animation: bounce 0.6s ease-in-out;
 }
 
 .image-container {
-  margin: 20px 0;
-  min-height: 100px;
+  margin: 15px 0;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .image-container img {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 150px;
+  max-height: 150px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -207,9 +219,9 @@ h1 {
 .restart-btn {
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 12px 25px;
   border-radius: 10px;
-  font-size: 1.1em;
+  font-size: 1em;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
@@ -219,18 +231,18 @@ h1 {
   background: linear-gradient(135deg, #ff4444, #cc0000);
 }
 
-#fail-restart-btn:hover {
+#fail-restart-btn:active {
   background: linear-gradient(135deg, #cc0000, #990000);
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 
 #success-restart-btn {
   background: linear-gradient(135deg, #70e000, #4caf50);
 }
 
-#success-restart-btn:hover {
+#success-restart-btn:active {
   background: linear-gradient(135deg, #4caf50, #388e3c);
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 
 .hidden {
@@ -251,8 +263,64 @@ h1 {
 
 /* 📱 MOBILE RESPONSIVE BREAKPOINTS */
 
+/* Very small phones (portrait) */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.2em;
+  }
+  
+  .subtitle {
+    font-size: 0.7em;
+  }
+  
+  #game-board {
+    grid-gap: 4px;
+    padding: 3px;
+  }
+  
+  .card {
+    font-size: 1.2em;
+    border-radius: 8px;
+  }
+  
+  .popup h2 {
+    font-size: 1.4em;
+  }
+  
+  .popup p {
+    font-size: 0.9em;
+  }
+  
+  .fail-emoji, .success-emoji {
+    font-size: 2.5em;
+  }
+  
+  .popup-content {
+    padding: 20px;
+  }
+}
+
 /* Small phones */
-@media (max-width: 400px) {
+@media (min-width: 361px) and (max-width: 400px) {
+  h1 {
+    font-size: 1.3em;
+  }
+  
+  .subtitle {
+    font-size: 0.72em;
+  }
+  
+  #game-board {
+    grid-gap: 5px;
+  }
+  
+  .card {
+    font-size: 1.4em;
+  }
+}
+
+/* Medium phones */
+@media (min-width: 401px) and (max-width: 600px) {
   h1 {
     font-size: 1.5em;
   }
@@ -263,36 +331,135 @@ h1 {
   
   #game-board {
     grid-gap: 6px;
-    padding: 5px;
+    padding: 8px;
   }
   
-  .popup h2 {
+  .card {
     font-size: 1.6em;
+    border-radius: 12px;
   }
   
-  .popup p {
-    font-size: 1em;
-  }
-  
-  .fail-emoji, .success-emoji {
-    font-size: 3em;
+  .game-container {
+    padding: 20px;
   }
 }
 
-/* Medium phones */
-@media (min-width: 401px) and (max-width: 600px) {
+/* Large phones and small tablets */
+@media (min-width: 601px) and (max-width: 768px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  
   #game-board {
     grid-gap: 8px;
+    padding: 10px;
+    max-width: 500px;
+  }
+  
+  .card {
+    font-size: 1.8em;
+  }
+  
+  .game-container {
+    padding: 25px;
+  }
+  
+  .popup h2 {
+    font-size: 1.8em;
+  }
+  
+  .fail-emoji, .success-emoji {
+    font-size: 3.5em;
   }
 }
 
 /* Tablets and larger */
-@media (min-width: 601px) {
+@media (min-width: 769px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  .subtitle {
+    font-size: 0.9em;
+  }
+  
   #game-board {
     grid-gap: 12px;
+    max-width: 550px;
+  }
+  
+  .card {
+    font-size: 2em;
+    border-radius: 14px;
+  }
+  
+  .card:hover {
+    transform: scale(1.08);
   }
   
   .game-container {
     padding: 30px 40px;
+  }
+  
+  .popup h2 {
+    font-size: 2em;
+  }
+  
+  .popup p {
+    font-size: 1.1em;
+  }
+  
+  .fail-emoji, .success-emoji {
+    font-size: 4em;
+  }
+  
+  .image-container img {
+    max-width: 180px;
+    max-height: 180px;
+  }
+  
+  .popup-content {
+    padding: 30px 40px;
+  }
+  
+  #fail-restart-btn:hover {
+    background: linear-gradient(135deg, #cc0000, #990000);
+    transform: scale(1.05);
+  }
+  
+  #success-restart-btn:hover {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    transform: scale(1.05);
+  }
+}
+
+/* Landscape orientation for phones */
+@media (max-height: 600px) and (orientation: landscape) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    font-size: 0.7em;
+    margin-bottom: 10px;
+  }
+  
+  #game-board {
+    grid-gap: 4px;
+    padding: 5px;
+  }
+  
+  #score {
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+  
+  .popup-content {
+    max-height: 85vh;
   }
 }
