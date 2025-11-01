@@ -4,42 +4,48 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
+  padding: 10px; /* 📱 Add padding for mobile */
 }
 
 .game-container {
   text-align: center;
   background: rgba(255, 255, 255, 0.6);
-  padding: 30px 40px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   position: relative;
+  max-width: 100%; /* 📱 Prevent overflow */
+  width: 100%;
 }
 
 h1 {
   color: #d63384;
-  font-size: 2em;
+  font-size: 1.8em;
   margin-bottom: 10px;
 }
 
 .subtitle {
   color: #444;
-  font-size: 1em;
+  font-size: 0.9em;
   margin-bottom: 20px;
 }
 
 #game-board {
   display: grid;
-  grid-template-columns: repeat(5, 100px);
-  grid-gap: 12px;
+  grid-template-columns: repeat(5, 1fr); /* 📱 Flexible columns */
+  grid-gap: 8px;
   justify-content: center;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-/* ✅ COMBINED card styles - no duplicates */
+/* ✅ Responsive card styles */
 .card {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  aspect-ratio: 1; /* 📱 Keep cards square */
   background-color: #ffb6c1;
   border-radius: 14px;
   cursor: pointer;
@@ -51,7 +57,7 @@ h1 {
   user-select: none;
   transition: transform 0.4s, background 0.4s;
   transform-style: preserve-3d;
-  overflow: hidden; /* Keep images inside card boundaries */
+  overflow: hidden;
 }
 
 .card:hover {
@@ -69,7 +75,6 @@ h1 {
   transform: scale(1.05);
 }
 
-/* 🖼️ Image styles inside cards */
 .card img {
   width: 100%;
   height: 100%;
@@ -80,11 +85,11 @@ h1 {
 
 #score {
   margin-top: 20px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #333;
 }
 
-/* 🎨 Base Popup Styles */
+/* 🎨 Popup Styles */
 .popup {
   position: fixed;
   top: 0;
@@ -98,6 +103,7 @@ h1 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  padding: 20px; /* 📱 Mobile padding */
 }
 
 .popup.show {
@@ -107,13 +113,14 @@ h1 {
 
 .popup-content {
   background: white;
-  padding: 40px 60px;
+  padding: 30px 40px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   text-align: center;
   transform: scale(0.7);
   transition: transform 0.3s ease;
-  max-width: 500px;
+  max-width: 90%; /* 📱 Responsive width */
+  width: 100%;
 }
 
 .popup.show .popup-content {
@@ -121,17 +128,17 @@ h1 {
 }
 
 .popup h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 20px;
 }
 
 .popup p {
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin-bottom: 25px;
   line-height: 1.6;
 }
 
-/* 💥 FAIL Popup Specific Styles */
+/* 💥 FAIL Popup */
 #fail-popup {
   background: rgba(139, 0, 0, 0.85);
 }
@@ -151,12 +158,12 @@ h1 {
 }
 
 .fail-emoji {
-  font-size: 5em;
+  font-size: 4em;
   margin: 20px 0;
   animation: shake 0.5s ease-in-out;
 }
 
-/* 🎉 SUCCESS Popup Specific Styles */
+/* 🎉 SUCCESS Popup */
 #success-popup {
   background: rgba(0, 100, 0, 0.85);
 }
@@ -176,23 +183,22 @@ h1 {
 }
 
 .success-emoji {
-  font-size: 5em;
+  font-size: 4em;
   margin: 20px 0;
   animation: bounce 0.6s ease-in-out;
 }
 
-/* 🖼️ Image Container */
 .image-container {
   margin: 20px 0;
-  min-height: 120px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .image-container img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 180px;
+  max-height: 180px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -241,4 +247,52 @@ h1 {
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
+}
+
+/* 📱 MOBILE RESPONSIVE BREAKPOINTS */
+
+/* Small phones */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .subtitle {
+    font-size: 0.8em;
+  }
+  
+  #game-board {
+    grid-gap: 6px;
+    padding: 5px;
+  }
+  
+  .popup h2 {
+    font-size: 1.6em;
+  }
+  
+  .popup p {
+    font-size: 1em;
+  }
+  
+  .fail-emoji, .success-emoji {
+    font-size: 3em;
+  }
+}
+
+/* Medium phones */
+@media (min-width: 401px) and (max-width: 600px) {
+  #game-board {
+    grid-gap: 8px;
+  }
+}
+
+/* Tablets and larger */
+@media (min-width: 601px) {
+  #game-board {
+    grid-gap: 12px;
+  }
+  
+  .game-container {
+    padding: 30px 40px;
+  }
 }
