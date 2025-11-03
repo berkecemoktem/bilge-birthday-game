@@ -50,7 +50,7 @@ h1 {
   width: 100%;
 }
 
-/* ✅ Responsive card styles */
+/* Responsive card styles */
 .card {
   width: 100%;
   aspect-ratio: 1;
@@ -99,7 +99,7 @@ h1 {
   font-weight: 600;
 }
 
-/* 🎨 Popup Styles */
+/* Popup Styles */
 .popup {
   position: fixed;
   top: 0;
@@ -150,7 +150,7 @@ h1 {
   line-height: 1.5;
 }
 
-/* 💥 FAIL Popup */
+/* FAIL Popup */
 #fail-popup {
   background: rgba(139, 0, 0, 0.85);
 }
@@ -175,7 +175,7 @@ h1 {
   animation: shake 0.5s ease-in-out;
 }
 
-/* 🎉 SUCCESS Popup */
+/* SUCCESS Popup */
 #success-popup {
   background: rgba(0, 100, 0, 0.85);
 }
@@ -215,7 +215,7 @@ h1 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* 🔘 Restart Buttons */
+/*  Restart Buttons */
 .restart-btn {
   color: white;
   border: none;
@@ -249,7 +249,7 @@ h1 {
   display: none;
 }
 
-/* 🎬 Animations */
+/* Animations */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-10px); }
@@ -261,7 +261,7 @@ h1 {
   50% { transform: translateY(-20px); }
 }
 
-/* 📱 MOBILE RESPONSIVE BREAKPOINTS */
+/* MOBILE RESPONSIVE BREAKPOINTS */
 
 /* Very small phones (portrait) */
 @media (max-width: 360px) {
