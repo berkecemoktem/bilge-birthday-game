@@ -17,7 +17,7 @@ let flippedCards = [];
 let matchedCount = 0;
 let gameOver = false;
 
-// 🖼️ 12 pairs of images (24 cards) + 1 "X" card = 25 total
+// 12 pairs of images (24 cards) + 1 "X" card = 25 total
 let images = [...Array(12).keys()].flatMap(n => [`bilge${n + 1}`, `bilge${n + 1}`]);
 images.push("X"); // Game Over card
 images.sort(() => Math.random() - 0.5); // Shuffle
@@ -58,7 +58,7 @@ function handleFlip(e) {
     flippedCards.length === 2
   ) return;
 
-  // 🖼️ Show the image or X
+  // Show the image or X
 if (card.dataset.image === "X") {
   card.textContent = "X";
   card.style.fontSize = "3em";
@@ -73,7 +73,7 @@ if (card.dataset.image === "X") {
   card.classList.add("flipped");
   flippedCards.push(card);
 
-  // 💀 If "X" card is flipped → game over immediately
+  // If "X" card is flipped → game over immediately
   if (card.dataset.image === "X") {
     card.style.backgroundColor = "#ff0000";
     card.style.color = "white";
@@ -109,7 +109,7 @@ if (card.dataset.image === "X") {
   }
 }
 
-// 💥 Show FAIL popup
+// Show FAIL popup
 function showFailPopup() {
   gameOver = true;
   failPopup.classList.remove("hidden");
@@ -135,7 +135,7 @@ successRestartBtn.addEventListener("click", () => {
   setTimeout(createBoard, 300);
 });
 
-// 🔍 TESTING ONLY - Reveal all cards (press R key)
+// TESTING ONLY - Reveal all cards (press R key)
 document.addEventListener('keydown', function(e) {
   if (e.key === 'r' || e.key === 'R') {
     document.querySelectorAll('.card').forEach(card => {
